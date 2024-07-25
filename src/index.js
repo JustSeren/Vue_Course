@@ -28,7 +28,6 @@ const app = Vue.createApp({
       count: 0,
       numbers: [1, 2, 3, 4, 5],
       value: "user",
-      error: "",
     };
   },
   computed: {
@@ -36,16 +35,16 @@ const app = Vue.createApp({
     evenList() {
       return this.numbers.filter((num) => this.isEven(num));
     },
+    error() {
+      if (this.value.length < 5) {
+        return "must be grater than 5";
+      }
+    },
   },
   methods: {
     input($event) {
       console.log($event.target.value);
       this.value = $event.target.value;
-      if (this.value.length < 5) {
-        this.error = "must be grater than 5";
-      } else {
-        this.error = "";
-      }
     },
     getClass(number) {
       return this.isEven(number) ? "blue" : "red";

@@ -1,13 +1,19 @@
 import * as Vue from "vue/dist/vue.esm-bundler.js";
 
-/*//v-model is the shorter way of 
-        v-bind:value="value"
-        v-on:input="input" 
-*/
+const Hello = {
+  template: `
+    <p>Hello</p>
+    `,
+};
+
 const app = Vue.createApp({
+  components: {
+    Hello,
+  },
   template: `
       <button v-on:click="increment()"> Increment </button>
       <p> {{count}}</p>
+      <hello/>
       <input 
         type = "checkbox"
         v-model="value"
@@ -29,6 +35,7 @@ const app = Vue.createApp({
             {{number}} 
         </div>
       </div>
+      <hello />
     `,
 
   data() {

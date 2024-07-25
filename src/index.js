@@ -1,14 +1,22 @@
 import * as Vue from "vue/dist/vue.esm-bundler.js";
 
-//v-on:input="input"
-//event name = functşon name
+/*//v-model is the shorter way of 
+        v-bind:value="value"
+        v-on:input="input" 
+*/
 const app = Vue.createApp({
   template: `
       <button v-on:click="increment()"> Increment </button>
       <p> {{count}}</p>
       <input 
-        v-bind:value="value"
-        v-on:input="input" 
+        type = "radio"
+        v-model="value"
+        value="a"
+        />
+        <input 
+        type = "radio"
+        v-model="value"
+        value="b"
         />
         {{ value }}
         <div class="red"> {{error}}</div>
@@ -27,7 +35,7 @@ const app = Vue.createApp({
     return {
       count: 0,
       numbers: [1, 2, 3, 4, 5],
-      value: "user",
+      value: "a",
     };
   },
   computed: {
@@ -42,10 +50,6 @@ const app = Vue.createApp({
     },
   },
   methods: {
-    input($event) {
-      console.log($event.target.value);
-      this.value = $event.target.value;
-    },
     getClass(number) {
       return this.isEven(number) ? "blue" : "red";
     },

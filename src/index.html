@@ -6,13 +6,21 @@
     <title>Try Vue</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <h1>! {{msg}} !</h1>
+    </div>
 
     <script type="module">
       import * as Vue from "vue/dist/vue.esm-bundler.js";
 
-      const app = Vue.createApp({});
-      app;
+      const app = Vue.createApp({
+        data() {
+          return {
+            msg: "hello vue",
+          };
+        },
+      });
+      app.mount("#app");
     </script>
   </body>
 </html>

@@ -30,7 +30,7 @@ const app = Vue.createApp({
   },
   methods: {
     getClass(number) {
-      return isEven(number) ? "blue" : "red";
+      return this.isEven(number) ? "blue" : "red";
     },
     increment() {
       this.count += 1;

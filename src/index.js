@@ -9,12 +9,12 @@ const app = Vue.createApp({
       <button v-on:click="increment()"> Increment </button>
       <p> {{count}}</p>
       <input 
-        type = "radio"
+        type = "checkbox"
         v-model="value"
         value="a"
         />
         <input 
-        type = "radio"
+        type = "checkbox"
         v-model="value"
         value="b"
         />
@@ -35,7 +35,7 @@ const app = Vue.createApp({
     return {
       count: 0,
       numbers: [1, 2, 3, 4, 5],
-      value: "a",
+      value: ["a", "b"],
     };
   },
   computed: {

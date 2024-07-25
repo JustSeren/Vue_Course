@@ -1,11 +1,18 @@
 import * as Vue from "vue/dist/vue.esm-bundler.js";
 
-//v-if
-//v-else
+//v-on:input="input"
+//event name = functşon name
 const app = Vue.createApp({
   template: `
       <button v-on:click="increment()"> Increment </button>
       <p> {{count}}</p>
+      <input 
+        v-bind:value="value"
+        v-on:input="input" 
+        />
+        {{ value }}
+        <div class="red"> {{error}}</div>
+
       <div
         v-for="number in numbers"
         v-bind:class="getClass(number)"
@@ -20,6 +27,8 @@ const app = Vue.createApp({
     return {
       count: 0,
       numbers: [1, 2, 3, 4, 5],
+      value: "user",
+      error: "",
     };
   },
   computed: {
@@ -29,6 +38,15 @@ const app = Vue.createApp({
     },
   },
   methods: {
+    input($event) {
+      console.log($event.target.value);
+      this.value = $event.target.value;
+      if (this.value.length < 5) {
+        this.error = "must be grater than 5";
+      } else {
+        this.error = "";
+      }
+    },
     getClass(number) {
       return this.isEven(number) ? "blue" : "red";
     },
